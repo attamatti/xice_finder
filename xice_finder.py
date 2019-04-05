@@ -20,11 +20,10 @@ import matplotlib.pyplot as plt
 from scipy import fftpack
 from scipy import misc
 import numpy as np
-#import pylab as py
 import struct
 from numpy import *
 
-vers = '0.4.6\n**PRE_RELEASE** please DO NOT DISTRIBUTE - report bugs to fbsmi@leeds.ac.uk'
+vers = '0.5'
 
 # for troubleshooting arrays
 #np.set_printoptions(threshold=np.nan)
@@ -262,6 +261,8 @@ if os.path.isdir('xice_finder_data') == False:
 stack = make_arg('--stack',False,False)
 imagesearch = make_arg('--i',True,True)
 pixelsize = float(make_arg('--apix',True,True))
+if pixelsize > 1.6:
+    sys.exit('ERROR: Pixel size must be less than 1.6 A/px to resolve ice diffraction spots.\nERROR: Specified A/px == {0} '.format(pixelsize))
 if imagesearch.split('.')[-1] in ['mrc','mrcs']:
     images = [imagesearch]
 else:
