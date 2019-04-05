@@ -8,7 +8,19 @@ If entering a directory make sure to include the trailing / on the directory nam
 
 The script operates on .mrc single images (micrographs) or .mrcs stacks (relion particle stacks) but not both at the same time
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=
+particle filtering scripts
+-=-=-=-=-=-=-=-=-=-=-=-=-=
+Either select particles below a certain crystalline ice threshold of lowpass filter the paticles with too much ice to 4.0A resolution.
+
+USAGE: particles-filter-by-ice.py --parts <particle starfile> --thresh <threshold>
+If the log file from xice_finder is called somthing different than xice_find.log specify it with --ice <path to logfile>
+
+An interesting idea but the utility of this is questionable... it doesn't seem to result in any gains in resolution generally.  If ice contamination is bad enough to cause significant drops in resolution at the ice diffraction frequencys your dataset is probably shit anyway.
+
+-=-=-=-=-=-=-=-=-
 Required Modules:
+-=-=-=-=-=-=-=-=-
 glob
 sys
 os
